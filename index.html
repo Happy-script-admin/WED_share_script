@@ -10,7 +10,7 @@
     <div class="background"></div>
     <header>
         <h1>FREE SCRIPT</h1>
-        <input type="text" id="search" placeholder="Tìm kiếm script..." onkeyup="searchScript()">
+        <input type="text" id="search" placeholder="Search script..." onkeyup="searchScript()">
     </header>
     <section class="script-list">
         <div class="script-item" data-name="Script 1">
@@ -39,7 +39,7 @@
         function copyScript(button) {
             let scriptText = button.previousElementSibling.innerText;
             navigator.clipboard.writeText(scriptText).then(() => {
-                alert("Đã copy script!");
+                alert("Script copied!");
             });
         }
         function searchScript() {
