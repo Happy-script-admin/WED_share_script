@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia Sẻ Script</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <h1>Kho Script</h1>
+        <input type="text" id="search" placeholder="Tìm kiếm script..." onkeyup="searchScript()">
+    </header>
+    <section class="script-list">
+        <div class="script-item" data-name="Script 1">
+            <h2>Script 1</h2>
+            <pre>// Nội dung script 1</pre>
+            <button class="copy-btn" onclick="copyScript(this)">Copy</button>
+        </div>
+        <div class="script-item" data-name="Script 2">
+            <h2>Script 2</h2>
+            <pre>// Nội dung script 2</pre>
+            <button class="copy-btn" onclick="copyScript(this)">Copy</button>
+        </div>
+        <!-- Thêm các script khác ở đây -->
+    </section>
+    <script>
+        function copyScript(button) {
+            let scriptText = button.previousElementSibling.innerText;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert("Đã copy script!");
+            });
+        }
+        function searchScript() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let scripts = document.querySelectorAll(".script-item");
+            scripts.forEach(script => {
+                let name = script.getAttribute("data-name").toLowerCase();
+                script.style.display = name.includes(input) ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
