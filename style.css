@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(120deg, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: waveBackground 6s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes waveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.script-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.script-item {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+pre {
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.copy-btn {
+    background: #6a11cb;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-btn:hover {
+    background: #2575fc;
+}
