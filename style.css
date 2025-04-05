@@ -4,41 +4,49 @@ body {
     color: white;
     overflow-x: hidden;
     position: relative;
+    background: black;
 }
 
 .background {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(120deg, #ff8800, #9139db, #5a4fcf);
-    background-size: 400% 400%;
-    animation: waveBackground 6s infinite alternate;
-    z-index: -1;
+    background: linear-gradient(-45deg, #ff8800, #9139db, #5a4fcf, #ff8800);
+    background-size: 600% 600%;
+    animation: waveBackground 16s ease-in-out infinite;
+    z-index: -2;
+    filter: brightness(1.1);
 }
 
 @keyframes waveBackground {
     0% {
         background-position: 0% 50%;
     }
+    25% {
+        background-position: 50% 75%;
+    }
     50% {
-        background-position: 50% 50%;
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 25%;
     }
     100% {
-        background-position: 100% 50%;
+        background-position: 0% 50%;
     }
 }
 
 .highlight {
     position: fixed;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(255, 136, 0, 0.5) 0%, rgba(255, 136, 0, 0) 80%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 136, 0, 0.3) 0%, rgba(255, 136, 0, 0) 80%);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: opacity 1s ease-out;
+    transition: opacity 0.8s ease-out;
     opacity: 0;
-    z-index: 0;
+    z-index: -1;
 }
 
 header {
@@ -53,6 +61,8 @@ input {
     border: none;
     font-size: 16px;
     outline: none;
+    background: #222;
+    color: white;
 }
 
 .script-list {
@@ -66,10 +76,10 @@ input {
 .script-item {
     background: #333;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 pre {
@@ -77,36 +87,22 @@ pre {
     padding: 10px;
     border-radius: 5px;
     overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .copy-btn {
     background: #ff8800;
     border: none;
     color: white;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    margin-top: 10px;
+    transition: 0.3s;
 }
 
 .copy-btn:hover {
-    background: #9139db;
+    background: #aa50e0;
 }
-
-<script>
-    document.addEventListener("mousemove", function (e) {
-        let highlight = document.querySelector(".highlight");
-        if (!highlight) {
-            highlight = document.createElement("div");
-            highlight.classList.add("highlight");
-            document.body.appendChild(highlight);
-        }
-        highlight.style.left = `${e.pageX}px`;
-        highlight.style.top = `${e.pageY}px`;
-        highlight.style.opacity = "1";
-        clearTimeout(highlight.fade);
-        highlight.fade = setTimeout(() => {
-            highlight.style.opacity = "0";
-        }, 500);
-    });
-</script>
